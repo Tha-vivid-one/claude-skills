@@ -1,0 +1,17 @@
+{
+  "name": "browse-skill",
+  "version": "1.0.0",
+  "description": "Claude Code skill for browser automation with persistent authenticated sessions using Playwright + real Chrome",
+  "main": "browser.js",
+  "scripts": {
+    "navigate": "node browser.js navigate",
+    "screenshot": "node browser.js screenshot",
+    "extract": "node browser.js extract",
+    "login": "BROWSER_HEADLESS=false node browser.js navigate"
+  },
+  "keywords": ["claude-code", "skill", "playwright", "browser", "automation"],
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.50.0"
+  }
+}

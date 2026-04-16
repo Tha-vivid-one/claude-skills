@@ -1,0 +1,68 @@
+{
+  "skill_name": "spec-kit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to add offline mode to the Valt iOS app. Users should be able to view their portfolio data even without internet, and it should sync back when they reconnect. I haven't thought through how to do this yet — can we plan it out properly before I start coding?",
+      "expected_output": "Should trigger spec-kit, start at Specify phase, ask targeted questions about offline requirements, create .specify/features/ directory",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I've been going back and forth on the scanner redesign for the polymarket bot. I keep changing my mind on the architecture. Can you help me break this down into a proper spec so I stop spinning my wheels?",
+      "expected_output": "Should trigger spec-kit, recognize user is stuck, guide through Specify then Plan phases",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/spec-kit notification-system",
+      "expected_output": "Should invoke skill directly with notification-system as feature name, create directory, ask which phase to start from",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "ok so I need to build a new dashboard widget that shows real-time P&L for open positions. it needs to pull from multiple exchanges and handle websocket disconnects gracefully. before we dive in lets actually think this through",
+      "expected_output": "Should trigger spec-kit even though user didn't say 'spec' — they want to plan before coding",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "what should we build for the onboarding flow? I have some ideas but nothing concrete yet. I want new users to connect their exchange API keys, set risk parameters, and see a tutorial. Let's spec it out",
+      "expected_output": "Should trigger spec-kit, start at Specify phase, help crystallize vague ideas into structured requirements",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "I need to hand this feature off to a contractor next week — can you help me write up a proper implementation plan they can follow without needing to ask me a million questions?",
+      "expected_output": "Should trigger spec-kit, recognize handoff context, focus on Plan and Tasks phases for clear documentation",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "there's a bug in the scanner — it's not detecting zone breakouts when volume is below the threshold. can you fix it?",
+      "expected_output": "Should NOT trigger spec-kit — this is a bug fix, not feature planning",
+      "should_trigger": false,
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "rename the getUserPortfolio function to fetchPortfolioData across the codebase",
+      "expected_output": "Should NOT trigger spec-kit — this is a simple refactor",
+      "should_trigger": false,
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "write me a PRD for the mobile app redesign",
+      "expected_output": "Should trigger /prd skill instead of spec-kit — PRD is a different format",
+      "should_trigger": false,
+      "files": []
+    }
+  ]
+}

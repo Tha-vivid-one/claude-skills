@@ -1,0 +1,23 @@
+{
+  "skill_name": "prompt-engineer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need a prompt for my trading bot. It takes in market data from Databento and needs to decide whether to enter a trade on NQ futures. The prompt should make the bot conservative — I'd rather miss trades than take bad ones. It needs to output a JSON decision with confidence score, direction, and reasoning.",
+      "expected_output": "Should interview about specific market signals, failure modes (false entries, overtrading, ignoring risk), then produce a tight prompt with JSON output format, conservative bias, and clear decision criteria",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "hey can you optimize this prompt for me? it works ok but sometimes gives weird results:\n\n\"You are a helpful assistant that summarizes articles. Please summarize the article the user gives you. Be concise and accurate. Use bullet points.\"",
+      "expected_output": "Should detect optimize mode, ask what 'weird results' means specifically, identify the 3 worst failure modes, then produce a tighter prompt with examples and guardrails against the stated failures. Should NOT do a full 8-question interview since user already has a working prompt.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "ok so i need a fierce prompt for when this cron job session kicks off every night at 10pm. basically it needs to audit the trading bot, check if its still running, look at the last 4 hours of trades, and figure out if something is broken or if the strategy needs tweaking. im sick of waking up to losses because nobody was watching. the prompt needs to make claude actually care about winning, not just go through the motions. it should check mom and edge metrics, if those are 0 thats a huge red flag. it should commit any fixes with a confidence score. and if it thinks the bot is fundamentally broken it should pause trading and leave me a report. dont let it be passive. i want it hungry",
+      "expected_output": "Should detect raw mode (typos, urgency, emotional language, 'hungry', 'fierce', 'sick of'). Should NOT ask 8 clinical questions. Should mirror the energy, play back extracted specs (10pm cron, 4-hour lookback, mom/edge metrics, confidence scores, pause mechanism, report). Ask 2-3 targeted follow-ups max. Produce a prompt that carries the user's intensity — not corporate, not passive. The prompt should encode: autonomous monitoring, specific metric checks, commit-with-confidence pattern, circuit breaker for broken strategies, and a tone of competitive drive.",
+      "files": []
+    }
+  ]
+}
