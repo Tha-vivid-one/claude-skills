@@ -12,7 +12,30 @@ Build a complete scroll-driven animated website from a design brief.
 
 ## Before You Start
 
-Check if scroll design context exists for this project (look for `scroll-context.md` in the project root or design docs). If it doesn't exist, tell the user: "No scroll design context found. Run `/teach-scroll` first to set up your design system, or describe what you want and I'll use sensible defaults."
+### 1. Check for design context
+Look for `scroll-context.md` in the project root or design docs. If it doesn't exist, tell the user: "No scroll design context found. Run `/teach-scroll` first to set up your design system, or describe what you want and I'll use sensible defaults."
+
+### 2. Check for brand voice (CRITICAL FOR COPY)
+Look for `brand-voice.md` in the project root. This file controls:
+- What tone the copy should have
+- Words to use and words to avoid
+- Whether AI-generated copy is acceptable
+- Draft headlines for each scroll moment
+- The product's origin story and differentiator
+
+**If `brand-voice.md` exists**: Use it. Copy the draft headlines from "Copy for Each Scroll Moment" section. Respect the "Words We NEVER Use" list. Match the tone and voice rules. If headlines are marked ✍️ (user should write), use a clear placeholder like `[YOUR HEADLINE HERE — user to write]` instead of generating AI copy.
+
+**If `brand-voice.md` doesn't exist**: Search the project for ANY brand/copy context:
+- README.md (often has the product pitch)
+- PRD or WHY docs (motivation, story)
+- Existing marketing pages
+- Package.json description field
+
+If nothing is found, STOP and tell the user: "I don't have enough brand context to write compelling copy. I can either: (A) run `/teach-scroll` to establish your voice, or (B) build the page with placeholder copy you'll replace later. Which do you prefer?"
+
+**Never generate generic SaaS copy** like "Transform your workflow" or "The future of X" without explicit brand context. Bad copy on a beautiful scroll experience is worse than no copy at all.
+
+### 3. Accept input
 
 If no context exists and the user wants to proceed anyway, use the defaults from `/teach-scroll`.
 
@@ -21,7 +44,7 @@ If no context exists and the user wants to proceed anyway, use the defaults from
 Accept one of:
 1. A markdown design brief file (path passed as argument)
 2. Inline description in the conversation
-3. An existing `scroll-context.md` in the project
+3. An existing `scroll-context.md` + `brand-voice.md` in the project
 
 The brief should describe **scroll moments** — what the user experiences at each stage of scrolling. If the user gives a vague brief ("make a cool landing page for my app"), interview them to get specific moments before building.
 
