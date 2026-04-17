@@ -109,7 +109,7 @@ export default function SectionName() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // All GSAP animations go here
-      // If using SplitText: splitInstance = new SplitText(ref.current, { type: "chars" });
+      // If using SplitText: splitInstance = new SplitText(ref.current, { type: "words,chars" });
     }, sectionRef);
     return () => {
       splitInstance?.revert(); // Revert SplitText FIRST (if used)
@@ -196,7 +196,9 @@ let splitInstance: any = null;
 
 useEffect(() => {
   const ctx = gsap.context(() => {
-    splitInstance = new SplitText(headingRef.current, { type: "chars" });
+    // CRITICAL: Use "words,chars" not just "chars" — wrapping each char in a span
+    // breaks CSS word-wrap, causing mid-word line breaks like "bro ken" and "em ail"
+    splitInstance = new SplitText(headingRef.current, { type: "words,chars" });
     gsap.from(splitInstance.chars, {
       y: 60, opacity: 0, rotateX: -40,
       stagger: 0.02, duration: 0.8, ease: "power3.out",
@@ -209,6 +211,14 @@ useEffect(() => {
     ctx.revert(); // Then revert GSAP context
   };
 }, []);
+```
+
+**Word-break fix**: SplitText wraps each character in a `<span>`, which lets CSS break words at any character. Always use `type: "words,chars"` so words stay together. Also add this CSS globally:
+```css
+/* Prevent SplitText from breaking words mid-line */
+[style*="display: inline-block"] {
+  word-break: keep-all;
+}
 ```
 
 ### The Four Layers

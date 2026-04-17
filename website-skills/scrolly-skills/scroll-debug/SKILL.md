@@ -89,13 +89,26 @@ ScrollTrigger.create({
 });
 ```
 
-### 5. SplitText Broken After Route Change
+### 5. SplitText Breaking Words Mid-Line
+**Symptom**: Headlines show "bro ken" instead of "broken", "em ail" instead of "email"
+**Cause**: `SplitText({ type: "chars" })` wraps each character in a `<span>`, which lets CSS break words at any character boundary instead of at word boundaries.
+**Fix**: Always use `"words,chars"` not just `"chars"`:
+```js
+// BAD: breaks words
+new SplitText(el, { type: "chars" })
+
+// GOOD: words stay together
+new SplitText(el, { type: "words,chars" })
+```
+Also add CSS: `[style*="display: inline-block"] { word-break: keep-all; }`
+
+### 5b. SplitText Broken After Route Change
 **Symptom**: Text shows raw HTML spans instead of formatted text, or is invisible
 **Cause**: SplitText wraps text in `<span>` elements. On route change, React re-renders and the original text is gone but the spans remain.
 **Fix**: Always revert SplitText in cleanup:
 ```js
 useEffect(() => {
-  const split = new SplitText(el, { type: "chars" });
+  const split = new SplitText(el, { type: "words,chars" });
   gsap.from(split.chars, { ... });
   return () => split.revert(); // CRITICAL
 }, []);
