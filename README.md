@@ -1,6 +1,6 @@
 # claude-skills
 
-A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, and persona-based testing.
+A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, persona-based testing, and note distillation.
 
 ## Skills
 
@@ -10,6 +10,7 @@ A collection of Claude Code skills for prompt engineering, browser automation, s
 | [browse](#browse) | `browse/` | Browser automation with persistent authenticated sessions (Playwright + real Chrome) |
 | [spec-kit](#spec-kit) | `spec-kit/` | Spec-Driven Development (SDD) — structured feature planning with Constitution > Specify > Plan > Tasks > Implement phases |
 | [persona-test](#persona-test) | `persona-test/` | Test any design, copy, UX, or product decision against 10 simulated user personas |
+| [progressive-summary](#progressive-summary) | `progressive-summary/` | Lay a non-destructive bold/highlight "scan-layer" over a long note for fast rereads — never rewrites or summarizes |
 
 ## Installation
 
@@ -27,6 +28,9 @@ claude skill add --from Tha-vivid-one/claude-skills --subdirectory spec-kit
 
 # persona-test
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory persona-test
+
+# progressive-summary
+claude skill add --from Tha-vivid-one/claude-skills --subdirectory progressive-summary
 ```
 
 Or install manually by copying a skill's directory into `~/.claude/skills/`.
@@ -121,6 +125,24 @@ Test any product decision against 10 diverse simulated personas. Works for copy,
 persona-test/
 ├── SKILL.md
 └── README.md
+```
+
+---
+
+## progressive-summary
+
+Lay a non-destructive "scan-layer" over a long note so a reread takes ~30 seconds instead of 20 minutes. Bold the load-bearing sentences, `==highlight==` the handful that are the essence — the note itself is never reworded, summarized, or restructured, just made scannable. AI-assisted progressive summarization (Tiago Forte's Distill layer).
+
+**Three reading depths after a pass:**
+- highlights only → the ~10-second essence
+- highlights + bold → the full argument in ~30 seconds
+- raw prose → only where a section earns it
+
+**Deliberately opt-in** — it runs only on the specific note you point it at, never auto-fires, and never rewrites, splits, or extracts (the opposite of summarize/condense). Best on long transcripts, saved articles, and research dumps before a second read-through. Highlight syntax (`==...==`) renders in Obsidian and other Obsidian-flavored-markdown tools.
+
+```
+progressive-summary/
+└── SKILL.md
 ```
 
 ---
