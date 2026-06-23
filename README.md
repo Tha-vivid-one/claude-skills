@@ -11,6 +11,8 @@ A collection of Claude Code skills for prompt engineering, browser automation, s
 | [spec-kit](#spec-kit) | `spec-kit/` | Spec-Driven Development (SDD) — structured feature planning with Constitution > Specify > Plan > Tasks > Implement phases |
 | [persona-test](#persona-test) | `persona-test/` | Test any design, copy, UX, or product decision against 10 simulated user personas |
 | [progressive-summary](#progressive-summary) | `progressive-summary/` | Lay a non-destructive bold/highlight "scan-layer" over a long note for fast rereads — never rewrites or summarizes |
+| [map-feature](#map-feature) | `map-feature/` | Adversarial reality-check before building — reads the codebase, hunts for prior art, shows a current→proposed Mermaid diff, stops for approval before any code |
+| [website-skills](#website-skills) | `website-skills/` | Scrollytelling suite — 7 skills to build, polish, debug, and adapt scroll-driven animated websites (GSAP / Lenis / ScrollTrigger) |
 
 ## Installation
 
@@ -31,6 +33,12 @@ claude skill add --from Tha-vivid-one/claude-skills --subdirectory persona-test
 
 # progressive-summary
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory progressive-summary
+
+# map-feature
+claude skill add --from Tha-vivid-one/claude-skills --subdirectory map-feature
+
+# website-skills — a suite; install any sub-skill, e.g.:
+claude skill add --from Tha-vivid-one/claude-skills --subdirectory website-skills/scrolly-skills/scrollytelling
 ```
 
 Or install manually by copying a skill's directory into `~/.claude/skills/`.
@@ -143,6 +151,51 @@ Lay a non-destructive "scan-layer" over a long note so a reread takes ~30 second
 ```
 progressive-summary/
 └── SKILL.md
+```
+
+---
+
+## map-feature
+
+Map what a feature actually touches **before** building it. Reads the existing codebase, hunts for prior art and reusable pieces, then shows a current→proposed architecture diff (Mermaid) with a reuse-first recommendation — and stops for approval before any code is written.
+
+This is an adversarial reality-check against the current code, **not** a generative design doc (use a PRD skill for that). Use it before building any non-trivial feature, when you suspect the work is about to over-build or duplicate something that already exists, or to verify the right approach before committing days of effort.
+
+**Triggers:** "map this feature", "before we build", "is there already something that does this", "what does this feature touch", "should I build this or reuse".
+
+```
+map-feature/
+└── SKILL.md
+```
+
+---
+
+## website-skills
+
+A suite of 7 skills for building scroll-driven narrative ("scrollytelling") websites with GSAP, Lenis, and ScrollTrigger. They live under `website-skills/scrolly-skills/`.
+
+| Skill | What it does |
+|-------|--------------|
+| `teach-scroll` | One-time setup — gathers scroll motion language + brand voice into persistent project guidelines |
+| `scrollytelling` | Build a complete scroll-driven animated page from a brief (Lenis smooth scroll + ScrollTrigger) |
+| `scroll-polish` | Final quality pass — timing, easing, spacing, and choreography that separate good from great |
+| `scroll-overdrive` | Push past conventional limits — shader transitions, velocity-reactive visuals, WebGL, advanced parallax |
+| `scroll-debug` | Diagnose & fix broken scroll animations — jank, hydration mismatches, ScrollTrigger/Lenis conflicts, mobile |
+| `scroll-adapt` | Make the experience work across mobile / tablet / desktop without breaking animations |
+| `scroll-normalize` | Enforce consistent motion language, easing, timing, and spacing across all sections |
+
+Typical flow: `teach-scroll` once, then `scrollytelling` to build, then `scroll-polish` / `scroll-adapt` / `scroll-normalize` to refine and `scroll-debug` when something breaks.
+
+```
+website-skills/
+└── scrolly-skills/
+    ├── teach-scroll/
+    ├── scrollytelling/
+    ├── scroll-polish/
+    ├── scroll-overdrive/
+    ├── scroll-debug/
+    ├── scroll-adapt/
+    └── scroll-normalize/
 ```
 
 ---
