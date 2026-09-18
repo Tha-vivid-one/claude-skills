@@ -138,7 +138,7 @@ After presenting the verdict, save the analysis as a Markdown note.
   ```
   Populate `session` / `session-project` from `~/.claude/.current-session` per global rules
   (`SESSION_ID=$(grep ^SESSION_ID= ~/.claude/.current-session | cut -d= -f2-)` and the CWD line,
-  short-path = CWD with `/Users/jarretttruett/Documents/` stripped).
+  short-path = CWD with `~/Documents/` stripped).
 - Body, in order:
   1. Scope
   2. Current-state Mermaid diagram
