@@ -1,6 +1,6 @@
 # claude-skills
 
-A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, persona-based testing, and note distillation.
+A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, persona-based testing, note distillation, and screen design review.
 
 ## Skills
 
@@ -12,6 +12,7 @@ A collection of Claude Code skills for prompt engineering, browser automation, s
 | [persona-test](#persona-test) | `persona-test/` | Test any design, copy, UX, or product decision against 10 simulated user personas |
 | [progressive-summary](#progressive-summary) | `progressive-summary/` | Lay a non-destructive bold/highlight "scan-layer" over a long note for fast rereads — never rewrites or summarizes |
 | [map-feature](#map-feature) | `map-feature/` | Adversarial reality-check before building — reads the codebase, hunts for prior art, shows a current→proposed Mermaid diff, stops for approval before any code |
+| [screen-review](#screen-review) | `screen-review/` | Review one screen of a web app on the running app: four isolated lenses (eyes, structure, words, code) built on Impeccable, merged into "what's off → the tweak", then fix or concept options, confirmed once |
 | [website-skills](#website-skills) | `website-skills/` | Scrollytelling suite — 7 skills to build, polish, debug, and adapt scroll-driven animated websites (GSAP / Lenis / ScrollTrigger) |
 
 ## Installation
@@ -36,6 +37,9 @@ claude skill add --from Tha-vivid-one/claude-skills --subdirectory progressive-s
 
 # map-feature
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory map-feature
+
+# screen-review
+claude skill add --from Tha-vivid-one/claude-skills --subdirectory screen-review
 
 # website-skills — a suite; install any sub-skill, e.g.:
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory website-skills/scrolly-skills/scrollytelling
@@ -169,6 +173,21 @@ map-feature/
 ```
 
 ---
+
+
+## screen-review
+
+Review one screen or component of a web app the way a design director would: why it reads off, and the exact tweak for each problem. Built on the [Impeccable](https://impeccable.style) skill.
+
+**The loop:**
+
+1. **Capture**, in code, once: `capture.mjs` loads the app at phone size in every theme, reaches the state, and writes screenshots plus facts about what is painted (every text run's font and contrast, every control's size and whether something covers it, what overlaps the target, what is clipped).
+2. **Four lenses** in parallel, isolated, and never told the complaint: **Eyes** (pixels only: critique, distill), **Structure** (layout, typeset), **Words** (clarify), **Code** (audit, harden, adapt, the Impeccable detector).
+3. **Merge**: duplicates become one finding, anything without evidence is dropped, conflicts with the design doc are named rather than decided, and the person's own complaint is checked against what the lenses found unprompted.
+4. **Report** in short bullets (at most eight, plus a score out of 40), saved where `/impeccable polish` picks it up.
+5. **Act**: fix the clear items in one batch; for taste calls, show three concepts drawn inside the real app. Then **confirm once**: recapture, and rerun only the lenses that raised the fixed findings.
+
+**Requires:** the Impeccable plugin, Chrome, Node 22+.
 
 ## website-skills
 
