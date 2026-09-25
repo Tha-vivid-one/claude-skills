@@ -1,6 +1,6 @@
 # claude-skills
 
-A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, persona-based testing, note distillation, and screen design review.
+A collection of Claude Code skills for prompt engineering, browser automation, spec-driven development, persona-based testing, note distillation, screen design review, and learning from your own confusing sessions.
 
 ## Skills
 
@@ -13,6 +13,7 @@ A collection of Claude Code skills for prompt engineering, browser automation, s
 | [progressive-summary](#progressive-summary) | `progressive-summary/` | Lay a non-destructive bold/highlight "scan-layer" over a long note for fast rereads — never rewrites or summarizes |
 | [map-feature](#map-feature) | `map-feature/` | Adversarial reality-check before building — reads the codebase, hunts for prior art, shows a current→proposed Mermaid diff, stops for approval before any code |
 | [screen-review](#screen-review) | `screen-review/` | Review one screen of a web app on the running app: four isolated lenses (eyes, structure, words, code) built on Impeccable, merged into "what's off → the tweak", then fix or concept options, confirmed once |
+| [debrief](#debrief) | `debrief/` | After a confusing session, find where you got lost or asked why, and point each gap to the right material: a quick answer, the tool's docs, a short explainer, the latest research, a book, or who to ask |
 | [website-skills](#website-skills) | `website-skills/` | Scrollytelling suite — 7 skills to build, polish, debug, and adapt scroll-driven animated websites (GSAP / Lenis / ScrollTrigger) |
 
 ## Installation
@@ -40,6 +41,9 @@ claude skill add --from Tha-vivid-one/claude-skills --subdirectory map-feature
 
 # screen-review
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory screen-review
+
+# debrief
+claude skill add --from Tha-vivid-one/claude-skills --subdirectory debrief
 
 # website-skills — a suite; install any sub-skill, e.g.:
 claude skill add --from Tha-vivid-one/claude-skills --subdirectory website-skills/scrolly-skills/scrollytelling
@@ -188,6 +192,29 @@ Review one screen or component of a web app the way a design director would: why
 5. **Act**: fix the clear items in one batch; for taste calls, show three concepts drawn inside the real app. Then **confirm once**: recapture, and rerun only the lenses that raised the fixed findings.
 
 **Requires:** the Impeccable plugin, Chrome, Node 22+.
+
+## debrief
+
+Run it at the end of a session where you got lost or kept asking why. It finds those moments in the transcript, works out whose gap each one was, and points every real learning gap to the right kind of material for that exact question. It is not a curriculum: some gaps need one sentence, some need a docs page, some need this month's research.
+
+**The loop:**
+
+1. **Find**, in code: the phrases people use when they're lost ("what does this mean"), curious ("why?", "what if we...") or misread ("I never said that"), or every question with `--wide`. Keys, tokens and emails are redacted before anything leaves the machine.
+2. **Sort** with Jev, [TypeSafe](https://docs.typesafe.ai)'s decision model: were you lost or curious, did the agent talk past you, is it worth learning, and which channel fits: a quick answer, the tool's own docs, a short explainer, the latest research, a book or course, or a person to ask.
+3. **Find the source**: Claude searches your own words plus the term, only shows links it actually found, and skips anything it already recommended.
+4. **Debrief** in short bullets: at most three things to read, watch or listen to, what the agent should stop doing, and how to ask next time.
+5. **Log** every learning moment, so repeats show up. `PROGRESSION.md` describes how to tune the skill from real runs.
+
+**Requires:** Python 3 and a TypeSafe API key (`TYPESAFE_API_KEY`). Optional: `config.json` (where the log lives, one line about you) and `library.md` (sources you trust for deep study). See the `.example` files.
+
+```
+debrief/
+├── SKILL.md
+├── debrief.py
+├── PROGRESSION.md
+├── library.example.md
+└── config.example.json
+```
 
 ## website-skills
 

@@ -1,0 +1,7 @@
+runs/
+__pycache__/
+# personal files: keep them out of the public repo
+config.json
+library.md
+PROGRESSION.local.md
+handoffs/
